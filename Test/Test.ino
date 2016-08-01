@@ -21,8 +21,8 @@ String inputString = "";
 String prevString = "";
 boolean stringComplete = false;
 
-unsigned int speedMMPS=83;
-unsigned int uptime=300;
+unsigned int speedMMPS=100;//83;
+unsigned int uptime=500;//300;
 unsigned int currentSpeed = 0;
 
 void setup() {
@@ -45,6 +45,7 @@ void loop() {
                 _2WD.setCarAdvance(0);
             currentSpeed = _2WD.setCarSpeedMMPS(speedMMPS,uptime);
 //            Serial.println("Current speed: "+String(currentSpeed));
+            _2WD.delayMS(5000);
             _2WD.setCarSlow2Stop(uptime);
 //            Serial.println("Current speed stop: "+String(_2WD.getCarSpeedMMPS()));
         } else if (inputString.equals("back\n")) {
@@ -55,7 +56,7 @@ void loop() {
             _2WD.setCarSlow2Stop(uptime);
 //            Serial.println("Current speed stop: "+String(_2WD.getCarSpeedMMPS()));
         } else if (inputString.equals("speed\n")) {
-//            Serial.println("Current speed: "+String(_2WD.getCarSpeedMMPS()));
+            Serial.println("Current speed: "+String(_2WD.getCarSpeedMMPS()));
         } 
 //        _2WD.demoActions(speedMMPS, 1000, 500);
         prevString = inputString;
