@@ -23,11 +23,13 @@
 1. Check with `iw dev` which interface to use, in our case `wlan0` on `phy0` is what we want
 2. Double check if `iw phy phy0 info` returns `monitor` in `Supported interface modes`
 3. Do the following
-```sudo iw phy phy0 interface add mon0 type monitor
+```
+sudo iw phy phy0 interface add mon0 type monitor
 sudo iw dev wlan0 del
 sudo ifconfig mon0 up
 sudo iw dev mon0 set freq 2437
-iwconfig mon0```
+iwconfig mon0
+```
 
 # Capture RSS signal of, e.g., sandlab wireless network
 ```sudo tcpdump -i mon0 -n -tttt | grep sandlab | awk '{print $8}'```
