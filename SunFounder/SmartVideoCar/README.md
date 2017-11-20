@@ -16,20 +16,38 @@
 5. Now you can ping 192.168.1.10 and hopefully you can connect to it (for the debugging purpose)
 
 # Setup wireless networks
-
-
+Run `sudo nano /etc/hostapd/hostapd.conf` and use the following as an example
+```
+interface=wlan0
+#driver=nl80211
+bssid=b8:27:eb:98:8c:a7 # specify mac address of the usb wifi
+ssid=Pi_AP-1c54  # name of wifi
+country_code=US
+hw_mode=g
+channel=11
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=Raspberry
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=CCMP
+wpa_group_rekey=86400
+ieee80211n=1
+wme_enabled=1
+```
 
 # Setup monitor mode of wifi card
-1. Check with `iw dev` which interface to use, in our case `wlan0` on `phy0` is what we want
-2. Double check if `iw phy phy0 info` returns `monitor` in `Supported interface modes`
+1. Check with `iw dev` which interface to use, in our case `wlan1` on `phy1` is what we want
+2. Double check if `iw phy phy1 info` returns `monitor` in `Supported interface modes`
 3. Do the following
 ```
-sudo iw phy phy0 interface add mon0 type monitor
-sudo iw dev wlan0 del
-sudo ifconfig mon0 up
-sudo iw dev mon0 set freq 2437
-iwconfig mon0
+sudo iw phy phy1 interface add mon1 type monitor
+sudo iw dev wlan1 del
+sudo ifconfig mon1 up
+sudo iw dev mon1 set freq 2437
+iwconfig mon1
 ```
 
 # Capture RSS signal of, e.g., sandlab wireless network
-```sudo tcpdump -i mon0 -n -tttt | grep sandlab | awk '{print $8}'```
+```sudo tcpdump -i mon1 -n -tttt | grep sandlab | awk '{print $8}'```
