@@ -1,0 +1,11 @@
+--- etc/default/hostapd.orig	2017-11-13 12:12:16.060855052 -0600
++++ etc/default/hostapd	2017-11-13 12:12:43.106038459 -0600
+@@ -7,7 +7,7 @@
+ # file and hostapd will be started during system boot. An example configuration
+ # file can be found at /usr/share/doc/hostapd/examples/hostapd.conf.gz
+ #
+-#DAEMON_CONF=""
++DAEMON_CONF="/etc/hostapd/hostapd.conf"
+ 
+ # Additional daemon options to be appended to hostapd command:-
+ # 	-d   show more debug messages (-dd for even more)

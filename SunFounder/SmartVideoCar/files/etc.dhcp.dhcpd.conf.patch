@@ -1,0 +1,25 @@
+--- etc/dhcp/dhcpd.conf.orig	2017-11-13 12:09:52.895262089 -0600
++++ etc/dhcp/dhcpd.conf	2017-11-13 12:10:21.012527807 -0600
+@@ -18,7 +18,7 @@
+ 
+ # If this DHCP server is the official DHCP server for the local
+ # network, the authoritative directive should be uncommented.
+-#authoritative;
++authoritative;
+ 
+ # Use this to send dhcp log messages to a different log file (you also
+ # have to hack syslog.conf to complete the redirection).
+@@ -105,3 +105,13 @@
+ #    range 10.0.29.10 10.0.29.230;
+ #  }
+ #}
++
++subnet 192.168.42.0 netmask 255.255.255.0 {
++ range 192.168.42.10 192.168.42.50;
++ option broadcast-address 192.168.42.255;
++ option routers 192.168.42.1;
++ default-lease-time 600;
++ max-lease-time 7200;
++ option domain-name "local";
++ option domain-name-servers 8.8.8.8, 8.8.4.4;
++}

@@ -16,6 +16,7 @@
 5. Now you can ping 192.168.1.10 and hopefully you can connect to it (for the debugging purpose)
 
 # Setup wireless networks
+Run `sudo apt-get install hostapd isc-dhcp-server`
 Run `sudo nano /etc/hostapd/hostapd.conf` and use the following as an example
 ```
 interface=wlan0

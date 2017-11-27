@@ -1,0 +1,11 @@
+--- etc/init.d/hostapd.orig	2017-11-13 12:16:34.849449204 -0600
++++ etc/init.d/hostapd	2017-11-13 12:16:53.695431527 -0600
+@@ -25,6 +25,8 @@
+ [ -s "$DAEMON_DEFS" ] && . /etc/default/hostapd
+ [ -n "$DAEMON_CONF" ] || exit 0
+ 
++/etc/hostapd/dynamicconf.sh
++
+ DAEMON_OPTS="-B -P $PIDFILE $DAEMON_OPTS $DAEMON_CONF"
+ 
+ . /lib/lsb/init-functions
