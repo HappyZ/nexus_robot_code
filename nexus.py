@@ -31,6 +31,9 @@ class NexusRobot:
     self.ser.write("rl%d,%d;" % (speed, angle))
     self._wait()
 
+  def stop(self, speed=0):
+    self.ser.write("s%d;" % (speed))
+    self._wait()
 
   
      
