@@ -37,21 +37,27 @@ class NexusRobot:
 
   
      
-
-robot = NexusRobot('/dev/cu.usbserial-AL00YYCA')
-robot.forward(200,10)
-robot.pause()
-robot.turnRight(200,90)
-robot.pause()
-robot.forward(200,10)
-robot.pause()
-robot.turnRight(200,90)
-robot.pause()
-robot.forward(200,10)
-robot.pause()
-robot.turnRight(200,90)
-robot.pause()
-robot.forward(200,10)
-robot.pause()
-robot.turnRight(200,90)
-robot.pause()
+if __name__ == '__main__'':
+  try:
+    robot = NexusRobot('/dev/cu.usbserial-AL00YYCA')
+    while 1:
+      robot.forward(200,20)
+      robot.pause()
+      robot.reverse(200,20)
+      robot.pause()
+#     robot.forward(200,10)
+#     robot.pause()
+#     robot.turnRight(200,90)
+#     robot.pause()
+#     robot.forward(200,10)
+#     robot.pause()
+#     robot.turnRight(200,90)
+#     robot.pause()
+#     robot.forward(200,10)
+#     robot.pause()
+#     robot.turnRight(200,90)
+#     robot.pause()
+  except KeyboardInterrupt:
+    robot.stop()
+  except BasicException:
+    raise
