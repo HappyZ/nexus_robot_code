@@ -59,5 +59,5 @@ if __name__ == '__main__'':
 #     robot.pause()
   except KeyboardInterrupt:
     robot.stop()
-  except BasicException:
+  except Exception:
     raise
