@@ -38,6 +38,19 @@ ieee80211n=1
 wme_enabled=1
 ```
 
+Then add `/etc/hostapd/hostapd.conf` to `DAEMON_CONF=/etc/hostapd/hostapd.conf` in `/etc/init.d/hostapd`
+
+After configuring `hostapd` and `isc-dhcp-server`, start them as system service:
+```
+sudo service hostapd start
+sudo service isc-dhcp-server start
+```
+
+If using ODroid and `RFKill` being a b**ch, i.e. running `rfkill list` showing soft block, add the following command to `/etc/rc.local` to make it work (ugly workaround):
+```
+sh -c "sleep 5 && rfkill unblock all && service networking restart && service isc-dhcp-server restart" &
+```
+
 # Setup monitor mode of wifi card
 1. Check with `iw dev` which interface to use, in our case `wlan1` on `phy1` is what we want
 2. Double check if `iw phy phy1 info` returns `monitor` in `Supported interface modes`
