@@ -109,7 +109,7 @@ if __name__ == '__main__':
         return k
 
     robot = None
-    speed = 100
+    speed = 200
     try:
         print('Initializing..')
         robot = NexusRobot('/dev/cu.usbserial-AL00YYCA')
@@ -137,8 +137,8 @@ if __name__ == '__main__':
                 print(robot.getInfo())
             elif k == '+':
                 speed += 20
-                if speed > 200:
-                    speed = 200
+                if speed > 400:
+                    speed = 400
                 print('Config speed to: {0}'.format(speed))
             elif k == '-':
                 speed -= 20
