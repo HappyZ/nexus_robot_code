@@ -1,4 +1,4 @@
-# Assemble the car
+# Assemble the SunFounder car with Video Camera
 
 # Install Raspberry Pi
 1. Download `SD Card Formatter` from https://www.sdcard.org/downloads/formatter_4/ based on your operating system
