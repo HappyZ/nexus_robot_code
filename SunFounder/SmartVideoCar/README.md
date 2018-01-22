@@ -30,15 +30,25 @@ macaddr_acl=0
 auth_algs=1
 ignore_broadcast_ssid=0
 wpa=2
-wpa_passphrase=Raspberry
+wpa_passphrase=xxxpassphrase
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=CCMP
 wpa_group_rekey=86400
 ieee80211n=1
 wme_enabled=1
 ```
-
-Then add `/etc/hostapd/hostapd.conf` to `DAEMON_CONF=/etc/hostapd/hostapd.conf` in `/etc/init.d/hostapd`
+Then run `sudo nano /etc/network/interface` and use the following as an example
+```
+auto lo
+iface lo inet loopback
+auto wlan0
+iface wlan0 inet static
+  hostapd /etc/hostapd/hostapd.conf
+  address 192.168.42.1
+  netmask 255.255.255.0
+```
+Then add `/etc/hostapd/hostapd.conf` to `DAEMON_CONF=/etc/hostapd/hostapd.conf` in `/etc/init.d/hostapd` and in `/etc/default/hostapd`.
+Then run `sudo nano /etc/dhcp/dhcpd.conf` and edit according to <a href="./files/etc.dhcp.dhcpd.conf.patch">this file</a>
 
 After configuring `hostapd` and `isc-dhcp-server`, start them as system service:
 ```
